@@ -15,20 +15,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MovieCollection">
         <activity
-            android:name=".view.MovieDetailsActivity"
-            android:exported="true" />
-        <activity
-            android:name=".view.MainActivity"
-            android:exported="true" />
-        <activity
-            android:name=".view.NowPlayingActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:name=".view.activities.SplashActivity"
+            android:exported="true" >
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+
         </activity>
+
+        <activity
+            android:name=".view.activities.MainMenuActivity"
+            android:exported="true"/>
+
     </application>
 
 </manifest>

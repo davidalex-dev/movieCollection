@@ -14,53 +14,43 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.moviecollection.R;
 import com.example.moviecollection.helper.Const;
-import com.example.moviecollection.model.NowPlaying;
+import com.example.moviecollection.model.Upcoming;
 
 import java.util.List;
 
-public class NowPlayingAdapter extends RecyclerView.Adapter<NowPlayingAdapter.CardViewViewHolder>{
+public class UpcomingAdapter extends RecyclerView.Adapter<UpcomingAdapter.CardViewViewHolder>{
 
     private Context context;
-    private List<NowPlaying.Results> listNowPlaying;
-    private List<NowPlaying.Results> getListNowPlaying(){
-        return listNowPlaying;
+    private List<Upcoming.Results> listUpcoming;
+    private List<Upcoming.Results> getListUpcoming(){
+        return listUpcoming;
     }
-    public void setListNowPlaying(List<NowPlaying.Results> listNowPlaying){
-        this.listNowPlaying = listNowPlaying;
+    public void setListUpcoming(List<Upcoming.Results> listUpcoming){
+        this.listUpcoming = listUpcoming;
     }
-    public NowPlayingAdapter(Context context){
+    public UpcomingAdapter(Context context){
         this.context = context;
     }
 
     @NonNull
     @Override
-    public CardViewViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public UpcomingAdapter.CardViewViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_movie, parent, false);
-        return new NowPlayingAdapter.CardViewViewHolder(view);
+        return new UpcomingAdapter.CardViewViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CardViewViewHolder holder, int position) {
-        final NowPlaying.Results results = getListNowPlaying().get(position);
+    public void onBindViewHolder(@NonNull UpcomingAdapter.CardViewViewHolder holder, int position) {
+        final Upcoming.Results results = getListUpcoming().get(position);
         holder.lbl_title.setText(results.getTitle());
         holder.lbl_overview.setText(results.getOverview());
         holder.lbl_release_date.setText(results.getRelease_date());
         Glide.with(context).load(Const.IMG_URL + results.getPoster_path()).into(holder.img_poster);
-//        holder.cv.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-////                [old code]
-////                Intent intent = new Intent(context, MovieDetailsActivity.class);
-////                intent.putExtra("movie_id", ""+results.getId());
-////                context.startActivity(intent);
-//
-//            }
-//        });
     }
 
     @Override
     public int getItemCount() {
-        return getListNowPlaying().size();
+        return getListUpcoming().size();
     }
 
     public class CardViewViewHolder extends RecyclerView.ViewHolder {
